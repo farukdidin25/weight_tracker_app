@@ -11,8 +11,8 @@ class _GraphScreenState extends State<GraphScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title:  Text('Graph'),),
-      body: Center(child: Text('Graph Screen')),
+      appBar: AppBar(centerTitle: true, title:  const Text('Graph'),),
+      body: const Center(child: Text('Graph Screen')),
     );
   }
 }

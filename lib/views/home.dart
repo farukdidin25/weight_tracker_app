@@ -1,10 +1,10 @@
-// ignore_for_file: avoid_types_as_parameter_names, avoid_print
+// ignore_for_file: avoid_types_as_parameter_names, avoid_print, use_key_in_widget_constructors
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weight_tracker_app/graph.dart';
-import 'package:weight_tracker_app/history.dart';
+import 'package:weight_tracker_app/views/graph.dart';
+import 'package:weight_tracker_app/views/history.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
           onTap: (int) {
             setState(() {
               _currentTab=int;
-              _currentScreen = (int==0)? GraphScreen(): HistoryScreen();
+              _currentScreen = (int==0)? const GraphScreen(): const HistoryScreen();
             });
             
           }),
