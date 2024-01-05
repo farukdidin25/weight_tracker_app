@@ -15,6 +15,40 @@ class _AddRecordViewState extends State<AddRecordView> {
   int _selectedValue = 70;
   DateTime _selectedDate = DateTime.now();
 
+  void pickDate(BuildContext context) async {
+    var initialDate = DateTime.now();
+    _selectedDate = await showDatePicker(
+          context: context,
+          initialDate: initialDate,
+          firstDate: initialDate.subtract(const Duration(days: 365)),
+          lastDate: initialDate.add(const Duration(days: 30)),
+          builder: (context, child) {
+            return Theme(
+                data: ThemeData.light().copyWith(
+                    colorScheme: const ColorScheme(
+                        brightness: Brightness.light,
+                        primary: Colors.black87,
+                        onPrimary: Colors.grey,
+                        secondary: Colors.yellow,
+                        onSecondary: Colors.yellowAccent,
+                        error: Colors.red,
+                        onError: Colors.orange,
+                        background: Colors.blueAccent,
+                        onBackground: Colors.blueGrey,
+                        surface: Colors.blue,
+                        onSurface: Colors.black26)),
+                child: child ?? const Text(''));
+          },
+        ) ??
+        _selectedDate;
+
+    if (kDebugMode) {
+      print(_selectedDate.toIso8601String());
+    }
+
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,23 +101,8 @@ class _AddRecordViewState extends State<AddRecordView> {
             ),
           ),
           GestureDetector(
-            onTap: () async {
-              var initialDate = DateTime.now();
-              _selectedDate = await showDatePicker(
-                      context: context,
-                      initialDate: initialDate,
-                      firstDate:
-                          initialDate.subtract(const Duration(days: 365)),
-                      lastDate: initialDate.add(const Duration(days: 30))) ??
-                  _selectedDate;
-
-              if (kDebugMode) {
-                print(_selectedDate.toIso8601String());
-              }
-
-              setState(() {
-                
-              });
+            onTap: () {
+              pickDate(context);
             },
             child: Card(
               shape: RoundedRectangleBorder(
