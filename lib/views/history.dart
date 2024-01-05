@@ -10,23 +10,27 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreen extends State<HistoryScreen> {
-  
   final Controller _controller = Get.put(Controller());
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title:  const Text('History'),),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children:  [
-          Text(_controller.records[0].note!),
-          Text(_controller.records[1].note!),
-          Text(_controller.records[2].note!),
-          Text(_controller.records[3].note!)
-        ],
-      )
-    );
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('History'),
+          actions: [
+            IconButton(
+                onPressed: _controller.addRecord, icon: const Icon(Icons.add))
+          ],
+        ),
+        body: Obx(() => ListView(
+              physics: const BouncingScrollPhysics(),
+              children: [
+                Text(_controller.records[0].note!),
+                Text(_controller.records[1].note!),
+                Text(_controller.records[2].note!),
+                Text(_controller.records[3].note!)
+              ],
+            )));
   }
 }
