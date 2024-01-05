@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weight_tracker_app/models/record.dart';
@@ -21,7 +23,7 @@ class _HistoryScreen extends State<HistoryScreen> {
     return Obx(() => Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('History'),
+          title: const Text('History'),
           actions: [
             IconButton(
                 onPressed: _controller.addRecord, icon: const Icon(Icons.add))
@@ -30,7 +32,7 @@ class _HistoryScreen extends State<HistoryScreen> {
         body: records.isEmpty
             ? Center(
                 child: Container(
-                  child: Text('Please Add Some Records'),
+                  child: const Text('Please Add Some Records'),
                 ),
               )
             : ListView(

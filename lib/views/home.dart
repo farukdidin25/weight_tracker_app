@@ -3,6 +3,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weight_tracker_app/views/add_record.dart';
 import 'package:weight_tracker_app/views/graph.dart';
 import 'package:weight_tracker_app/views/history.dart';
 
@@ -23,7 +24,9 @@ class _HomeState extends State<Home> {
       //body: GraphScreen(),
       body: _currentScreen,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(()=>const AddRecordView());
+        },
         backgroundColor: Colors.black,
         child:  const Icon(Icons.add),
       ),
